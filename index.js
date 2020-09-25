@@ -1,5 +1,5 @@
 exports.init=function(){
-    /*:w
+    /*
      *
      * @public
      */
