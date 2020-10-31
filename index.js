@@ -1,4 +1,6 @@
-exports.init=function(){
+'use strict'
+
+const initBase=function(){
     /*
      *
      * @public
@@ -111,5 +113,5 @@ exports.init=function(){
     init();
 }
 
-
+exports.init = initBase;
 
