@@ -1,6 +1,6 @@
 {
   "name": "initrc",
-  "version": "1.0.1",
+  "version": "1.0.1-r2",
   "description": "initalizer Start Stop manager",
   "main": "index.js",
   "scripts": {
