@@ -53,7 +53,7 @@ const initBase=function(){
      * @private
      */
      let arrayMaker=function(numb){
-        out=[];
+        let out=[];
         for(let i =0; numb> i; i++)
            out.push([]);
         return out;
