@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const initBase=function(){
     /*
@@ -12,7 +12,7 @@ const initBase=function(){
         run: async function(){
             execute(levels.start);
         }
-    }
+    };
     /*
      * @public
      */
@@ -24,7 +24,7 @@ const initBase=function(){
             execute(levels.main);
         }
 
-    }
+    };
     /*
      * @public
      */
@@ -35,7 +35,7 @@ const initBase=function(){
         run: async function(){
             execute(levels.stop);
         }
-    }
+    };
     /*
      * @private
      */
@@ -47,25 +47,25 @@ const initBase=function(){
         async:false,
         forward:true,
         i:0
-    }
+    };
     /*
      * @param integer {numb}
      * @private
      */
-     let arrayMaker=function(numb){
+    let arrayMaker=function(numb){
         let out=[];
         for(let i =0; numb> i; i++)
-           out.push([]);
+            out.push([]);
         return out;
-    }
+    };
     /*
      * @private
      */
     let init = function(){
-         levels.start = arrayMaker(11);
-         levels.stop = arrayMaker(11);
-         levels.main = arrayMaker(1);
-    }
+        levels.start = arrayMaker(11);
+        levels.stop = arrayMaker(11);
+        levels.main = arrayMaker(1);
+    };
     /*
      * @param string {even}
      * @param function {func}
@@ -74,12 +74,12 @@ const initBase=function(){
      * @private
      */
     let add = function(even, fun, level, name){
-         if(
-             (0>["start", "stop", "main"].indexOf(even))||
+        if(
+            (0>['start', 'stop', 'main'].indexOf(even))||
              (parseInt(level) > levels[even].length-1)||
              (0>parseInt(level))||
-             (typeof fun !== "function")
-         )
+             (typeof fun !== 'function')
+        )
             return false;
         levels[even][level].push({
             fun:fun, 
@@ -87,7 +87,7 @@ const initBase=function(){
         });
         return true;
 
-    }
+    };
     /*
      * @param array {level}
      * @private
@@ -95,23 +95,23 @@ const initBase=function(){
     let execute=async function(level){
         for (let p = 0; level.length > p; p++) 
             for (let i = 0; level[p].length > i; i++) 
-                await run(level[p][i])
-    }
+                await run(level[p][i]);
+    };
     /*
      * @param object {process}
      * @private
      */
-     let run = async function(process){
-        if(process.fun.constructor.name === "AsyncFunction"){
+    let run = async function(process){
+        if(process.fun.constructor.name === 'AsyncFunction'){
             await process.fun();
         }else{
             process.fun();
         }
         return true;
-    }
+    };
     //constructor
     init();
-}
+};
 
 exports.init = initBase;
 
