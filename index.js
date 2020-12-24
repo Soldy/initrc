@@ -61,7 +61,7 @@ const initBase=function(){
     /*
      * @private
      */
-    let init = function(){
+     const init = function(){
         levels.start = arrayMaker(11);
         levels.stop = arrayMaker(11);
         levels.main = arrayMaker(1);
@@ -72,8 +72,9 @@ const initBase=function(){
      * @param integer {level}
      * @param string {name}
      * @private
+     * @return boolean
      */
-    let add = function(even, fun, level, name){
+    const add = function(even, fun, level, name){
         if(
             (0>['start', 'stop', 'main'].indexOf(even))||
              (parseInt(level) > levels[even].length-1)||
@@ -92,7 +93,7 @@ const initBase=function(){
      * @param array {level}
      * @private
      */
-    let execute=async function(level){
+     const execute=async function(level){
         for (let p = 0; level.length > p; p++) 
             for (let i = 0; level[p].length > i; i++) 
                 await run(level[p][i]);
@@ -100,8 +101,9 @@ const initBase=function(){
     /*
      * @param object {process}
      * @private
+     * @return boolean
      */
-    let run = async function(process){
+    const run = async function(process){
         if(process.fun.constructor.name === 'AsyncFunction'){
             await process.fun();
         }else{
