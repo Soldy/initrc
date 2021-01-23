@@ -61,7 +61,7 @@ const initBase=function(){
     /*
      * @private
      */
-     const init = function(){
+    const init = function(){
         levels.start = arrayMaker(11);
         levels.stop = arrayMaker(11);
         levels.main = arrayMaker(1);
@@ -93,7 +93,7 @@ const initBase=function(){
      * @param array {level}
      * @private
      */
-     const execute=async function(level){
+    const execute=async function(level){
         for (let p = 0; level.length > p; p++) 
             for (let i = 0; level[p].length > i; i++) 
                 await run(level[p][i]);
