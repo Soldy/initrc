@@ -1,4 +1,11 @@
+/*
+ *  @Soldy\initrc\2021.01.26\GPL3
+ */
 'use strict';
+
+/*
+ * @prototype
+ */
 
 const initBase=function(){
     /*
@@ -49,7 +56,7 @@ const initBase=function(){
         i:0
     };
     /*
-     * @param integer {numb}
+     * @param {integer} numb
      * @private
      */
     let arrayMaker=function(numb){
@@ -67,12 +74,12 @@ const initBase=function(){
         levels.main = arrayMaker(1);
     };
     /*
-     * @param string {even}
-     * @param function {func}
-     * @param integer {level}
-     * @param string {name}
+     * @param {string} even
+     * @param {function} func
+     * @param {integer} level
+     * @param {string} name
      * @private
-     * @return boolean
+     * @return {boolean}
      */
     const add = function(even, fun, level, name){
         if(
@@ -90,7 +97,7 @@ const initBase=function(){
 
     };
     /*
-     * @param array {level}
+     * @param {array} level
      * @private
      */
     const execute=async function(level){
@@ -99,9 +106,9 @@ const initBase=function(){
                 await run(level[p][i]);
     };
     /*
-     * @param object {process}
+     * @param {object} process
      * @private
-     * @return boolean
+     * @return {boolean}
      */
     const run = async function(process){
         if(process.fun.constructor.name === 'AsyncFunction'){
