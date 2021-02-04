@@ -1,4 +1,4 @@
-const initrc = new (require('./index.js').init)();
+const initrc = new (require('./index.js')).base();
 
 initrc.start.add(function(){
     console.log('start');

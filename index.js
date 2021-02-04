@@ -1,5 +1,5 @@
 /*
- *  @Soldy\initrc\2021.01.26\GPL3
+ *  @Soldy\initrc\2021.02.04\GPL3
  */
 'use strict';
 
@@ -59,7 +59,7 @@ const initBase=function(){
      * @param {integer} numb
      * @private
      */
-    let arrayMaker=function(numb){
+    const arrayMaker=function(numb){
         let out=[];
         for(let i =0; numb> i; i++)
             out.push([]);
@@ -122,5 +122,6 @@ const initBase=function(){
     init();
 };
 
+exports.base = initBase;
 exports.init = initBase;
 
