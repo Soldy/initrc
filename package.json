@@ -1,6 +1,6 @@
 {
   "name": "initrc",
-  "version": "1.0.1-r2",
+  "version": "1.0.2",
   "description": "initalizer Start Stop manager",
   "main": "index.js",
   "scripts": {
@@ -19,5 +19,9 @@
   "license": "GPLv3",
   "bugs": {
     "url": "https://github.com/Soldy/initr/issues"
+  },
+  "devDependencies": {
+    "interactiveConsole": "0.0.7-alpha0",
+    "nanoTest": "^0.9.9-beta10"
   }
 }
