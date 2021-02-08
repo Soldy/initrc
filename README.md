@@ -1,12 +1,16 @@
 
-![alt_tag](https://travis-ci.com/Soldy/initrc.svg?branch=master)
-
 # initrc
 
 ## What is this.
 
 initrc a simple tool which helps to build a software (backend/ frontend) with designed start and graceful shutdown.
 
+## install
+
+```bash
+npm i initrc
+
+```
 
 ## init 
 
