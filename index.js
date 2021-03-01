@@ -7,120 +7,100 @@
  * @prototype
  */
 
-const initBase=function(){
+const levelRunnerBase = function(beforeIn, afterIn){
     /*
-     *
+     * @param {function} func
+     * @param {integer} level
+     * @param {string} name
      * @public
+     * @return {boolean}
      */
-    this.start={
-        add:function(fun, level, name){
-            add('start', fun, level, name);
-        },
-        run: async function(){
-            execute(levels.start);
-        }
-    };
-    /*
-     * @public
-     */
-    this.main={
-        add:function(fun,name){
-            add('main', fun, 0, name);
-        },
-        run: async function(){
-            execute(levels.main);
-        }
-
-    };
+    this.add = function(fun, level, name){
+        return add(fun, level, name);
+    }
     /*
      * @public
      */
-    this.stop={
-        add:function(fun, level, name){
-            add('stop', fun, level, name);
-        },
-        run: async function(){
-            execute(levels.stop);
-        }
-    };
+    this.run = function(){
+        return run();
+    }
     /*
      * @private
+     * @var {boolean}
      */
-    let levels={
-        start:[],
-        stop:[],
-        main:[],
-        level:0,
-        async:false,
-        forward:true,
-        i:0
-    };
-    /*
-     * @param {integer} numb
-     * @private
-     */
-    const arrayMaker=function(numb){
-        let out=[];
-        for(let i =0; numb> i; i++)
-            out.push([]);
-        return out;
-    };
+    let before = ()=>{}; 
     /*
      * @private
+     * @var {boolean}
      */
-    const init = function(){
-        levels.start = arrayMaker(11);
-        levels.stop = arrayMaker(11);
-        levels.main = arrayMaker(1);
-    };
+    let after = ()=>{}; 
     /*
-     * @param {string} even
+     * @private
+     * @var {array}
+     */
+    let procedures = []; 
+    /*
      * @param {function} func
      * @param {integer} level
      * @param {string} name
      * @private
      * @return {boolean}
      */
-    const add = function(even, fun, level, name){
+    const add = function(fun, level, name){
         if(
-            (0>['start', 'stop', 'main'].indexOf(even))||
-             (parseInt(level) > levels[even].length-1)||
-             (0>parseInt(level))||
-             (typeof fun !== 'function')
+             ( level > procedures.length-1 ) ||
+             ( 0 > level ) ||
+             ( typeof fun !== 'function' )
         )
             return false;
-        levels[even][level].push({
-            fun:fun, 
+        procedures[level].push({
+            fun:fun,
             name:name
         });
         return true;
+    }
+    /*
+     * @private
+     */
+    const run=async function(){
+        before();
+        for (let p of procedures) 
+            for (let i of p) 
+                await execute(i);
+        after();
+    };
+    /*
+     * @param {object} procedure
+     * @private
+     */
+    const execute = async function(procedure){
+        if(procedure.fun.constructor.name === 'AsyncFunction')
+            return await procedure.fun();
+        return procedure.fun();
+    };
+    for(let i =0; 10> i; i++)
+        procedures.push([]);
+    if(typeof afterIn !== 'undefined')
+         after = afterIn;
+    if(typeof beforeIn !== 'undefined')
+         before = beforeIn;
+}
 
-    };
+const startLevel = new levelRunnerBase();
+const stopLevel = new levelRunnerBase(()=>{},process.exit);
+
+const initBase=function(){
     /*
-     * @param {array} level
-     * @private
+     *
+     * @public
      */
-    const execute=async function(level){
-        for (let p = 0; level.length > p; p++) 
-            for (let i = 0; level[p].length > i; i++) 
-                await run(level[p][i]);
-    };
+    this.start = startLevel;
     /*
-     * @param {object} proc
-     * @private
-     * @return {boolean}
+     * @public
      */
-    const run = async function(procedure){
-        if(procedure.fun.constructor.name === 'AsyncFunction'){
-            await procedure.fun();
-        }else{
-            procedure.fun();
-        }
-        return true;
-    };
-    //constructor
-    init();
+    this.stop = stopLevel; 
 };
+
 
 exports.base = initBase;
 exports.init = initBase;
