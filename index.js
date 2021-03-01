@@ -106,15 +106,15 @@ const initBase=function(){
                 await run(level[p][i]);
     };
     /*
-     * @param {object} process
+     * @param {object} proc
      * @private
      * @return {boolean}
      */
-    const run = async function(process){
+    const run = async function(procedure){
         if(process.fun.constructor.name === 'AsyncFunction'){
             await process.fun();
         }else{
-            process.fun();
+            procedure.fun();
         }
         return true;
     };
