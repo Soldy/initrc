@@ -111,8 +111,8 @@ const initBase=function(){
      * @return {boolean}
      */
     const run = async function(procedure){
-        if(process.fun.constructor.name === 'AsyncFunction'){
-            await process.fun();
+        if(procedure.fun.constructor.name === 'AsyncFunction'){
+            await procedure.fun();
         }else{
             procedure.fun();
         }
