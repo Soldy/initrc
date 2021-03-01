@@ -1,5 +1,5 @@
 /*
- *  @Soldy\initrc\2021.02.04\GPL3
+ *  @Soldy\initrc\2021.02.21\GPL3
  */
 'use strict';
 
@@ -78,6 +78,7 @@ const levelRunnerBase = function(beforeIn, afterIn){
             return await procedure.fun();
         return procedure.fun();
     };
+    // init
     for(let i =0; 10> i; i++)
         procedures.push([]);
     if(typeof afterIn !== 'undefined')
