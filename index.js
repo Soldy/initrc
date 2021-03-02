@@ -28,17 +28,17 @@ const levelRunnerBase = function(before_in, after_in){
      * @private
      * @var {boolean}
      */
-    let before = ()=>{};
+    let _before = ()=>{};
     /*
      * @private
      * @var {boolean}
      */
-    let after = ()=>{};
+    let _after = ()=>{};
     /*
      * @private
      * @var {array}
      */
-    let procedures = [];
+    let _procedures = [];
     /*
      * @param {function} func
      * @param {integer} level
@@ -48,12 +48,12 @@ const levelRunnerBase = function(before_in, after_in){
      */
     const add = function(fun, level, name){
         if(
-             ( level > procedures.length-1 ) ||
+             ( level > _procedures.length-1 ) ||
              ( 0 > level ) ||
              ( typeof fun !== 'function' )
         )
             return false;
-        procedures[level].push({
+        _procedures[level].push({
             fun:fun,
             name:name
         });
@@ -63,11 +63,11 @@ const levelRunnerBase = function(before_in, after_in){
      * @private
      */
     const run=async function(){
-        before();
-        for (let p of procedures) 
+        _before();
+        for (let p of _procedures) 
             for (let i of p) 
                 await execute(i);
-        after();
+        _after();
     };
     /*
      * @param {object} procedure
@@ -80,11 +80,11 @@ const levelRunnerBase = function(before_in, after_in){
     };
     // init
     for(let i =0; 10> i; i++)
-        procedures.push([]);
+        _procedures.push([]);
     if(typeof afterIn !== 'undefined')
-         after = after_in;
+         _after = after_in;
     if(typeof beforeIn !== 'undefined')
-         before = before_in;
+         _before = before_in;
 }
 
 const startLevel = new levelRunnerBase();
