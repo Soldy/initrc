@@ -91,9 +91,9 @@ const levelRunnerBase = function(before_in, after_in, level_in){
         _level = level_in;
     for(let i =0; _level> i; i++)
         _procedures.push([]);
-    if(typeof afterIn !== 'undefined')
+    if(typeof afterIn === 'function')
         _after = after_in;
-    if(typeof beforeIn !== 'undefined')
+    if(typeof beforeIn === 'function')
         _before = before_in;
 };
 
