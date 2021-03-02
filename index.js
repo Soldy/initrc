@@ -125,6 +125,13 @@ const initBase=function(){
      * @public
      */
     this.stop = _stop;
+    /*
+     * @public
+     * @retur {integer}
+     */
+    this.status = function(){
+        return _status;
+    };
 };
 
 
