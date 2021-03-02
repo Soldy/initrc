@@ -7,7 +7,7 @@
  * @prototype
  */
 
-const levelRunnerBase = function(beforeIn, afterIn){
+const levelRunnerBase = function(before_in, after_in){
     /*
      * @param {function} func
      * @param {integer} level
@@ -28,17 +28,17 @@ const levelRunnerBase = function(beforeIn, afterIn){
      * @private
      * @var {boolean}
      */
-    let before = ()=>{}; 
+    let before = ()=>{};
     /*
      * @private
      * @var {boolean}
      */
-    let after = ()=>{}; 
+    let after = ()=>{};
     /*
      * @private
      * @var {array}
      */
-    let procedures = []; 
+    let procedures = [];
     /*
      * @param {function} func
      * @param {integer} level
@@ -82,9 +82,9 @@ const levelRunnerBase = function(beforeIn, afterIn){
     for(let i =0; 10> i; i++)
         procedures.push([]);
     if(typeof afterIn !== 'undefined')
-         after = afterIn;
+         after = after_in;
     if(typeof beforeIn !== 'undefined')
-         before = beforeIn;
+         before = before_in;
 }
 
 const startLevel = new levelRunnerBase();
@@ -92,7 +92,6 @@ const stopLevel = new levelRunnerBase(()=>{},process.exit);
 
 const initBase=function(){
     /*
-     *
      * @public
      */
     this.start = startLevel;
