@@ -15,13 +15,13 @@ const levelRunnerBase = function(before_in, after_in, level_in){
      * @return {boolean}
      */
     this.add = function(fun, level, name){
-        return add(fun, level, name);
+        return _add(fun, level, name);
     };
     /*
      * @public
      */
     this.run = function(){
-        return run();
+        return _run();
     };
     /*
      * @private
@@ -50,7 +50,7 @@ const levelRunnerBase = function(before_in, after_in, level_in){
      * @private
      * @return {boolean}
      */
-    const add = function(fun, level, name){
+    const _add = function(fun, level, name){
         if(
             ( level >= _level ) ||
              ( 0 > level ) ||
@@ -66,18 +66,18 @@ const levelRunnerBase = function(before_in, after_in, level_in){
     /*
      * @private
      */
-    const run=async function(){
+    const _run=async function(){
         _before();
         for (let p of _procedures) 
             for (let i of p) 
-                await execute(i);
+                await _execute(i);
         _after();
     };
     /*
      * @param {object} procedure
      * @private
      */
-    const execute = async function(procedure){
+    const _execute = async function(procedure){
         if(procedure.fun.constructor.name === 'AsyncFunction')
             return await procedure.fun();
         return procedure.fun();
