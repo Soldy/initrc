@@ -17,13 +17,13 @@ const levelRunnerBase = function(before_in, after_in){
      */
     this.add = function(fun, level, name){
         return add(fun, level, name);
-    }
+    };
     /*
      * @public
      */
     this.run = function(){
         return run();
-    }
+    };
     /*
      * @private
      * @var {boolean}
@@ -48,7 +48,7 @@ const levelRunnerBase = function(before_in, after_in){
      */
     const add = function(fun, level, name){
         if(
-             ( level > _procedures.length-1 ) ||
+            ( level > _procedures.length-1 ) ||
              ( 0 > level ) ||
              ( typeof fun !== 'function' )
         )
@@ -58,7 +58,7 @@ const levelRunnerBase = function(before_in, after_in){
             name:name
         });
         return true;
-    }
+    };
     /*
      * @private
      */
@@ -82,10 +82,10 @@ const levelRunnerBase = function(before_in, after_in){
     for(let i =0; 10> i; i++)
         _procedures.push([]);
     if(typeof afterIn !== 'undefined')
-         _after = after_in;
+        _after = after_in;
     if(typeof beforeIn !== 'undefined')
-         _before = before_in;
-}
+        _before = before_in;
+};
 
 
 const initBase=function(){
@@ -120,14 +120,14 @@ const initBase=function(){
         },
         process.exit
     );
-    this.start = _start
+    this.start = _start;
     /*
      * @public
      */
     this.stop = _stop;
     /*
      * @public
-     * @retur {integer}
+     * @return {integer}
      */
     this.status = function(){
         return _status;
