@@ -21,23 +21,6 @@ const initrc = new (require('initrc')).init();
 
 ```
 
-frontend
-
-
-```javascript
-
-window.onload = initrc.start.run;
-
-```
-
-backend
-
-```javascript
-
-initrc.start.run();
-
-```
-
 
 
 ## add process
@@ -55,4 +38,22 @@ initrc.start.add(
 
 ```
 
+## boot 
+
+frontend
+
+
+```javascript
+
+window.onload = initrc.start.run;
+
+```
+
+backend
+
+```javascript
+
+initrc.start.run();
+
+```
 
