@@ -87,18 +87,44 @@ const levelRunnerBase = function(before_in, after_in){
          _before = before_in;
 }
 
-const startLevel = new levelRunnerBase();
-const stopLevel = new levelRunnerBase(()=>{},process.exit);
 
 const initBase=function(){
     /*
-     * @public
+     * init status 
+     * 0 = init
+     * 1 = boot
+     * 2 = main
+     * 3 = shotdown 
+     *
+     * @private
+     * @var {integer} 
      */
-    this.start = startLevel;
+    let _status = 0;
+    /*
+     * @private
+     */
+    const _start = new levelRunnerBase(
+        function(){
+            _status = 1;
+        },
+        function(){
+            _status = 2;
+        }
+    );
+    /*
+     * @orivate
+     */
+    const _stop = new levelRunnerBase(
+        function(){
+            _status = 3;
+        },
+        process.exit
+    );
+    this.start = _start
     /*
      * @public
      */
-    this.stop = stopLevel; 
+    this.stop = _stop;
 };
 
 
