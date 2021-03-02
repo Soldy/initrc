@@ -6,8 +6,7 @@
 /*
  * @prototype
  */
-
-const levelRunnerBase = function(before_in, after_in){
+const levelRunnerBase = function(before_in, after_in, level_in){
     /*
      * @param {function} func
      * @param {integer} level
@@ -40,6 +39,11 @@ const levelRunnerBase = function(before_in, after_in){
      */
     let _procedures = [];
     /*
+     * @private
+     * @var {integer}
+     */
+    let _level = 10;
+    /*
      * @param {function} func
      * @param {integer} level
      * @param {string} name
@@ -48,7 +52,7 @@ const levelRunnerBase = function(before_in, after_in){
      */
     const add = function(fun, level, name){
         if(
-            ( level > _procedures.length-1 ) ||
+            ( level >= _level ) ||
              ( 0 > level ) ||
              ( typeof fun !== 'function' )
         )
@@ -79,7 +83,13 @@ const levelRunnerBase = function(before_in, after_in){
         return procedure.fun();
     };
     // init
-    for(let i =0; 10> i; i++)
+    if (
+        ( typeof level_in !== 'undefined') &&
+        ( Number.isInteger(level_in) ) &&
+        ( level_in > 0 )
+    )
+        _level = level_in;
+    for(let i =0; _level> i; i++)
         _procedures.push([]);
     if(typeof afterIn !== 'undefined')
         _after = after_in;
@@ -88,6 +98,9 @@ const levelRunnerBase = function(before_in, after_in){
 };
 
 
+/*
+ * @prototype
+ */
 const initBase=function(){
     /*
      * init status 
