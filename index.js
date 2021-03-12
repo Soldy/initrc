@@ -2,7 +2,7 @@
  *  @Soldy\initrc\2021.02.21\GPL3
  */
 'use strict';
-const levelRunnerBase = (require('levelrunnerrc')).Base;
+const $levelRunner = (require('levelrunnerrc')).Base;
 
 /*
  * @prototype
@@ -22,7 +22,7 @@ const initBase=function(){
     /*
      * @private
      */
-    const _start = new levelRunnerBase(
+    const _start = new $levelRunner(
         function(){
             _status = 1;
         },
@@ -33,7 +33,7 @@ const initBase=function(){
     /*
      * @orivate
      */
-    const _stop = new levelRunnerBase(
+    const _stop = new $levelRunner(
         function(){
             _status = 3;
         },
