@@ -2,7 +2,7 @@
  *  @Soldy\initrc\2021.02.21\GPL3
  */
 'use strict';
-const $levelRunner = (require('levelrunnerrc')).Base;
+const $levelRunner = (require('levelrunnerrc')).base;
 
 /*
  * @prototype
@@ -49,12 +49,12 @@ const initBase=function(){
      * @return {integer}
      */
     this.status = function(){
-        return _status;
+        return parseInt(_status);
     };
 };
 
 
 exports.Base = initBase;
 exports.base = initBase; // compatibility
-exports.init = initBase; // coompatibility
+exports.init = initBase; // compatibility
 

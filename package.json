@@ -21,7 +21,7 @@
     "url": "https://github.com/Soldy/initrc/issues"
   },
   "devDependencies": {
-    "nanoTest": "^0.9.9-beta17c"
+    "nanoTest": "^0.9.9-beta26"
   },
   "dependencies": {
     "levelrunnerrc": "0.0.1"
