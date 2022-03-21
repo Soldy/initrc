@@ -9,6 +9,63 @@ const $levelRunner = (require('levelrunnerrc')).base;
  */
 const initBase=function(){
     /*
+     * @param {function} func
+     * @param {integer} level
+     * @param {string} name
+     * @public
+     * @return {boolean}
+     */
+    this.startAdd = function(fun, level, name){
+        return _start.add(fun, level, name);
+    };
+    /*
+     * @param {integer} level
+     * @param {string} name
+     * @public
+     * @return {boolean}
+     */
+    this.startdel = function(level, name){
+        return _start.del(level, name); 
+    }
+    /*
+     * @public
+     */
+    this.startRun = function(){
+        return _start.run();
+    };
+    /*
+     * @param {function} func
+     * @param {integer} level
+     * @param {string} name
+     * @public
+     * @return {boolean}
+     */
+    this.stopAdd = function(fun, level, name){
+        return _stop.add(fun, level, name);
+    };
+    /*
+     * @param {integer} level
+     * @param {string} name
+     * @public
+     * @return {boolean}
+     */
+    this.stopdel = function(level, name){
+        return _stop.del(level, name); 
+    }
+    /*
+     * @public
+     */
+    this.stopRun = function(){
+        return _stop.run();
+    };
+    /*
+     * @public
+     * @return {integer}
+     */
+    this.status = function(){
+        return parseInt(_status);
+    };
+    /*
      * init status 
      * 0 = init
      * 1 = boot
@@ -39,18 +96,14 @@ const initBase=function(){
         },
         process.exit
     );
+    /*
+     * @public
+     */
     this.start = _start;
     /*
      * @public
      */
     this.stop = _stop;
-    /*
-     * @public
-     * @return {integer}
-     */
-    this.status = function(){
-        return parseInt(_status);
-    };
 };
 
 
