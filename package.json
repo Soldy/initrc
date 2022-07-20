@@ -1,6 +1,6 @@
 {
   "name": "initrc",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "initalizer Start Stop manager",
   "main": "index.js",
   "scripts": {
@@ -21,9 +21,9 @@
     "url": "https://github.com/Soldy/initrc/issues"
   },
   "devDependencies": {
-    "nanoTest": "^0.9.9-beta26"
+    "nanoTest": "0.9.9-beta32"
   },
   "dependencies": {
-    "levelrunnerrc": "0.0.1"
+    "levelrunnerrc": "1.0.0"
   }
 }

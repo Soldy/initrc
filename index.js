@@ -67,7 +67,8 @@ const Init=function(){
         },
         function(){
             _status = 2;
-        }
+        },
+        10
     );
     /*
      * @orivate
@@ -76,7 +77,8 @@ const Init=function(){
         function(){
             _status = 3;
         },
-        process.exit
+        process.exit,
+        10
     );
     /*
      * @public
