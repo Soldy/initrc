@@ -7,7 +7,7 @@ const $levelRunner = (require('levelrunnerrc')).base;
 /*
  * @prototype
  */
-const initBase=function(){
+const Init=function(){
     /*
      * @param {function} func
      * @param {integer} level
@@ -18,15 +18,6 @@ const initBase=function(){
     this.startAdd = function(fun, level, name){
         return _start.add(fun, level, name);
     };
-    /*
-     * @param {integer} level
-     * @param {string} name
-     * @public
-     * @return {boolean}
-     */
-    this.startdel = function(level, name){
-        return _start.del(level, name); 
-    }
     /*
      * @public
      */
@@ -43,15 +34,6 @@ const initBase=function(){
     this.stopAdd = function(fun, level, name){
         return _stop.add(fun, level, name);
     };
-    /*
-     * @param {integer} level
-     * @param {string} name
-     * @public
-     * @return {boolean}
-     */
-    this.stopdel = function(level, name){
-        return _stop.del(level, name); 
-    }
     /*
      * @public
      */
@@ -107,7 +89,8 @@ const initBase=function(){
 };
 
 
-exports.Base = initBase;
-exports.base = initBase; // compatibility
-exports.init = initBase; // compatibility
+exports.Base = Init;
+exports.base = Init; // compatibility
+exports.init = Init; // compatibility
+exports.Init = Init; // compatibility
 
