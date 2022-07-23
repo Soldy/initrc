@@ -21,8 +21,8 @@ const Init=function(){
     /*
      * @public
      */
-    this.startRun = function(){
-        return _start.run();
+    this.startRun = async function(){
+        return await _start.run();
     };
     /*
      * @param {function} func
@@ -37,8 +37,8 @@ const Init=function(){
     /*
      * @public
      */
-    this.stopRun = function(){
-        return _stop.run();
+    this.stopRun = async function(){
+        return await _stop.run();
     };
     /*
      * @public
