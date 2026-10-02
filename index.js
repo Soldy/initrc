@@ -16,13 +16,16 @@ const Init=function(){
      * @return {boolean}
      */
     this.startAdd = function(fun, level, name){
-        return _start.add(fun, level, name);
+        _check(fun, level, name);
+        const out = _start.add(fun, level, name);
+        return out;
     };
     /*
      * @public
      */
     this.startRun = async function(){
-        return await _start.run();
+        const out = await _start.run();
+        return out;
     };
     /*
      * @param {function} func
@@ -32,13 +35,16 @@ const Init=function(){
      * @return {boolean}
      */
     this.stopAdd = function(fun, level, name){
-        return _stop.add(fun, level, name);
+        _check(fun, level, name);
+        const out = _stop.add(fun, level, name);
+        return out;
     };
     /*
      * @public
      */
     this.stopRun = async function(){
-        return await _stop.run();
+        const out = await _stop.run();
+        return out;
     };
     /*
      * @public
@@ -48,14 +54,14 @@ const Init=function(){
         return parseInt(_status);
     };
     /*
-     * init status 
+     * init status
      * 0 = init
      * 1 = boot
      * 2 = main
-     * 3 = shotdown 
+     * 3 = shutdown
      *
      * @private
-     * @var {integer} 
+     * @var {integer}
      */
     let _status = 0;
     /*
@@ -71,7 +77,12 @@ const Init=function(){
         10
     );
     /*
-     * @orivate
+     * Last exit step.
+     * We close the gracefull shut down with the process.exit.
+     * That won't be graceful. But in theory,
+     * we already did all the necessary exit steps.
+     *
+     * @private
      */
     const _stop = new $levelRunner(
         function(){
@@ -80,14 +91,28 @@ const Init=function(){
         process.exit,
         10
     );
+
     /*
+     * @param {function} func
+     * @param {integer} level
+     * @param {string} name
      * @public
+     * @return {null}
      */
-    this.start = _start;
-    /*
-     * @public
-     */
-    this.stop = _stop;
+    const _check = function(fun, level, name){
+        if (typeof fun !== 'function')
+            throw Error('The first variable is not a function ');
+        if (typeof level !== 'number')
+            throw Error('Run level is not a number');
+        if (!Number.isInteger(level))
+            throw Error('Run level is not an integer');
+        if (0 > level)
+            throw Error('Run level is smaller than 0');
+        if (level > 9)
+            throw Error('Run level is higher than 9');
+        if (typeof name !== 'string')
+            throw Error('Task name is not a string');
+    };
 };
 
 

@@ -1,13 +1,13 @@
 const initrc = new (require('./index.js')).base();
 
-initrc.start.add(function(){
+initrc.startAdd(function(){
     console.log('start');
 },1,'test');
-initrc.start.run();
-initrc.stop.add(function(){
+initrc.startRun();
+initrc.stopAdd(function(){
     console.log('stop');
 },1,'test');
-initrc.stop.run();
+initrc.stopRun();
 
 
 
